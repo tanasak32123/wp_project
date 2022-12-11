@@ -1,0 +1,15 @@
+<%= form_with url: main_create_path, method: :post, data: {turbo: false} do |form| %>
+    <h1 style="margin-bottom: 20px;"><i class="fa-solid fa-circle-user"></i> Login</h1>
+    <label for="email" class="form-label"><b>Email</b>: </label>
+    <input type="text" class="form-control form" name="email" id="email">
+    <div class="invalid-feedback" id="email-feedback"></div>
+    <label for="password" class="form-label" style="margin-top:10px;"><b>Password</b>:</label>
+    <input type="password" class="form-control form" name="password" id="password">
+    <div class="invalid-feedback" id="password-feedback"></div>
+    <div class="text-end mt-1">
+        <small>Are you have an account? <%= link_to "Create a new account", new_account_path %></small>
+    </div>
+    <button id="sign_in" type="button" class="btn btn-danger">Sign in</button>
+<% end %>    
+
+<%= javascript_pack_tag 'login' %>

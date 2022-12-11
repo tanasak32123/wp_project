@@ -1,0 +1,25 @@
+<%= form_with url: create_user_path, method: :post, data: {turbo: false} do |form| %>
+    <h1 style="margin-bottom: 20px;"><i class="fa-solid fa-circle-user"></i> Create a new account</h1>
+    <label for="email" class="form-label"><b>Email</b>: </label>
+    <input type="text" class="form-control form" name="email" id="email">
+    <div class="invalid-feedback" id="email-feedback"></div>
+    <label for="name" class="form-label" style="margin-top:10px;"><b>Name</b>:</label>
+    <input type="text" class="form-control form" name="name" id="name" value="<%= @name %>">
+    <div class="invalid-feedback" id="name-feedback"></div>
+    <label for="password" class="form-label" style="margin-top:10px;"><b>Password</b>:</label>
+    <input type="password" class="form-control form" name="password" id="password">
+    <div class="invalid-feedback" id="password-feedback"></div>
+    <label for="re_password" class="form-label" style="margin-top:10px;"><b>Re-password</b>:</label>
+    <input type="password" class="form-control form" name="re_password" id="re-password">
+    <div class="invalid-feedback" id="re-password-feedback"></div>
+    <label for="user_type" class="form-label" style="margin-top:10px;"><b>Role</b>:</label>
+    <select name="role" id="role" class="form-select form" aria-label="role">
+        <option value="" selected>Select your role</option>
+        <option value="1">Seller</option>
+        <option value="2">Buyer</option>
+    </select>
+    <div class="invalid-feedback" id="role-feedback"></div>
+    <button id="create" type="button" class="btn btn-primary mt-3">Create</button>
+<% end %>    
+
+<%= javascript_pack_tag 'new_account' %>
