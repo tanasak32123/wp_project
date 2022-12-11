@@ -1,0 +1,13 @@
+<div class="d-grid gap-2 col-6 mx-auto mt-4">
+    <% if session[:user_type] != 'seller' %>
+        <button class="btn btn-primary" type="button"><i class="fa-solid fa-shop"></i>&nbsp; My market</button>
+        <button class="btn btn-primary" type="button"><i class="fa-solid fa-basket-shopping"></i>&nbsp; Purchase history</button>
+    <% end %>
+    <% if session[:user_type] != 'buyer' %>
+        <button class="btn btn-primary" type="button"><i class="fa-solid fa-right-left"></i>&nbsp; Sale history</button>
+        <button class="btn btn-primary" type="button"><i class="fa-solid fa-box-archive"></i>&nbsp; My inventory</button>
+        <button class="btn btn-primary" type="button"><i class="fa-solid fa-user"></i>&nbsp; Top seller</button>
+    <% end %>
+</div>
+
+

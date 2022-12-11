@@ -1,0 +1,19 @@
+<h1><i class="fa-solid fa-address-card"></i>&nbsp; New Profile</h1>
+<%= form_with url: update_profile_path, method: :post, data: {turbo: false}, id: :form do |form| %>
+<label for="email" class="form-label"><b>New email</b>: </label>
+<input type="text" class="form-control form" name="email" id="email" placeholder="Enter your new email" required>
+<div class="invalid-feedback" id="email-feedback"></div>
+<label for="name" class="form-label mt-2"><b>New name</b>:</label>
+<input type="text" class="form-control form" name="name" id="name" placeholder="Enter your new name" required>
+<div class="invalid-feedback" id="name-feedback"></div>
+<label for="role" class="form-label" style="margin-top:10px;"><b>Role</b>:</label>
+    <select name="role" id="role" class="form-select form" aria-label="role">
+        <option value="" selected>Select your role</option>
+        <option value="1">Seller</option>
+        <option value="2">Buyer</option>
+    </select>
+    <div class="invalid-feedback" id="role-feedback"></div>
+<button id="update" type="button" class="btn btn-primary mt-3">Update</button>
+<% end %>   
+
+<%= javascript_pack_tag 'new_profile' %>

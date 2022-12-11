@@ -1,0 +1,6 @@
+<h1 class="mb-3"><i class="fa-solid fa-address-card"></i>&nbsp; My Profile</h1>
+<h6><b>Email</b>: <%= @a.email %></h6>
+<h6><b>Name</b>: <%= @a.name %></h6>
+<h6><b>Role</b>: <%= @a.user_type %></h6>
+<%= link_to "Edit profile", new_profile_path, class: "btn btn-secondary mt-1", style: "width: 160px;" %><br>
+<%= link_to "Change password", new_password_path, class: "btn btn-secondary mt-2", style: "width: 160px;" %>
