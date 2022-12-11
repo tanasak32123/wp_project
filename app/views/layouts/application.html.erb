@@ -19,8 +19,9 @@
             <a class="navbar-brand" href="/main">
                <i class="fa-solid fa-shop"></i>&nbsp;&nbsp; Market Place
             </a>
+            <% if session[:userId] %>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
@@ -53,7 +54,6 @@
                             <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-user"></i>&nbsp;&nbsp; Top seller</a>
                         </li>
                         <% end %>
-                        <% if session[:userId] %>
                         <li><hr style="color: white;"></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,10 +69,10 @@
                                 </li>
                             </ul>
                         </li>
-                        <% end %>
                     </ul>
                 </div>
             </div>
+            <% end %>
         </div>
     </nav>
     <div class="container mt-4 mb-4 position-relative" style="top: 50px;">
