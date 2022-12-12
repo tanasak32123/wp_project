@@ -28,7 +28,16 @@
                 <td><%= @market.stock %></td>
                 <td><%=form.text_field :quantity , class: 'form-control'%></td>
             </tr>
+            <tr>
+                <th scope="row">Enable Product</th>
+                <td><%= form.radio_button :enable, "true" %>
+                <%= form.label :enable_item, "Enable" %></td>
+                <td><%= form.radio_button :enable, "false" %>
+                <%= form.label :disable_item, "Disable" %></td>
+            </tr>
         </tbody>
     </table>
     <%=form.submit :Edit , class: 'btn btn-primary'%>
 <%end%>
+
+

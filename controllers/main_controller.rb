@@ -124,6 +124,12 @@ class MainController < ApplicationController
       market.price = params[:price].to_f
     end
 
+    if params[:enable] == "true" 
+      item.enable = 1
+    elsif params[:enable] == "false"
+      item.enable = 0
+    end
+
     market.save
     item.save
 

@@ -36,33 +36,7 @@
             <% user_name = user.name %>
             <% item = Item.where(id:market.item_id).first %>
             <% item_name = item.name %>
-            <tr>
-                <th scope='col'><%= user_name %></th> 
-                <th scope='col'><%= item_name %></th> 
-                <th scope='col'><%= market.price %></th> 
-                <th scope='col'><%= market.stock %></th> 
-                <th scope='col'>
-                    <%= form_with url: cal_market_path, data: {turbo: false} do |form| %>
-                    <div class="input-group mb-3">
-                        <%= hidden_field_tag 'id', market.id  %>
-                        <%= hidden_field_tag 'item_id', market.item_id  %>
-                        <%= hidden_field_tag 'seller_id', market.user_id  %>
-                        <%=form.text_field :amount , class: 'form-control'%>
-                        <%=form.submit :Buy , class: 'btn btn-primary'%>
-                    </div>
-                    <%end%>
-                </th>
-            </tr>
-        <%end%>
-    <% else %>
-        <% item_id = session[:all_item]%>
-        <% item_id.each do |item| %>
-            <% market_item = Market.where(item_id:item) %>
-            <% market_item.each do |market| %>
-                <% user = User.where(id:market.user_id).first %>
-                <% user_name = user.name %>
-                <% item = Item.where(id:market.item_id).first %>
-                <% item_name = item.name %>
+            <% if item.enable == 1 %>
                 <tr>
                     <th scope='col'><%= user_name %></th> 
                     <th scope='col'><%= item_name %></th> 
@@ -80,6 +54,36 @@
                         <%end%>
                     </th>
                 </tr>
+            <%end%>
+        <%end%>
+    <% else %>
+        <% item_id = session[:all_item]%>
+        <% item_id.each do |item| %>
+            <% market_item = Market.where(item_id:item) %>
+            <% market_item.each do |market| %>
+                <% user = User.where(id:market.user_id).first %>
+                <% user_name = user.name %>
+                <% item = Item.where(id:market.item_id).first %>
+                <% item_name = item.name %>
+                <% if item.enable == 1 %>
+                    <tr>
+                        <th scope='col'><%= user_name %></th> 
+                        <th scope='col'><%= item_name %></th> 
+                        <th scope='col'><%= market.price %></th> 
+                        <th scope='col'><%= market.stock %></th> 
+                        <th scope='col'>
+                            <%= form_with url: cal_market_path, data: {turbo: false} do |form| %>
+                            <div class="input-group mb-3">
+                                <%= hidden_field_tag 'id', market.id  %>
+                                <%= hidden_field_tag 'item_id', market.item_id  %>
+                                <%= hidden_field_tag 'seller_id', market.user_id  %>
+                                <%=form.text_field :amount , class: 'form-control'%>
+                                <%=form.submit :Buy , class: 'btn btn-primary'%>
+                            </div>
+                            <%end%>
+                        </th>
+                    </tr>
+                <%end%>
             <%end%>
         <%end%>
     <%end%>

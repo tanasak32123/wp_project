@@ -6,7 +6,7 @@
       <th scope="col">Product</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
-      <th scope="col"></th>
+      <th scope="col">Status</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -18,6 +18,11 @@
             <td><%= item_name %></td>
             <td><%= product.price %></td>
             <td><%= product.stock %></td>
+            <% if item.enable == 1 %>
+                <td>Enable</td>
+            <% else %>
+                <td>Disable</td>
+            <%end%>
             <td><%= link_to "Edit Product", edit_product_path(item_id:item.id, market_id:product.id) , class: 'btn btn-success'%></td>
             <td><%= link_to "Destroy this product", delete_item_path(item_id:item.id, market_id:product.id), class: 'btn btn-danger' %></td>
         </tr>
