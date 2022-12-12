@@ -1,0 +1,29 @@
+<h1>Main#my_inventory</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventory.each do |product| %>
+    <% item = Item.where(id:product.item_id).first%>
+    <% item_name = item.name%>
+        <tr>
+            <td><%= item_name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td><%= link_to "Edit Product", edit_product_path(item_id:item.id, market_id:product.id) , class: 'btn btn-success'%></td>
+            <td><%= link_to "Destroy this product", delete_item_path(item_id:item.id, market_id:product.id), class: 'btn btn-danger' %></td>
+        </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to "Add New Product", add_product_path , class: 'btn btn-success'%>
+

@@ -1,0 +1,28 @@
+<h1>Main#sale_history</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">To</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Sale time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sale_history.each do |product| %>
+    <% item = Item.where(id:product.item_id).first%>
+    <% item_name = item.name%>
+    <% buyer = User.where(id:product.user_id).first %>
+    <% buyer_name = buyer.name %>
+        <tr>
+            <td><%= item_name %></td>
+            <td><%= buyer_name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.qty %></td>
+            <td><%= product.created_at%></td>
+        </tr>
+    <%end%>
+  </tbody>
+</table>

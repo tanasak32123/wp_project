@@ -1,0 +1,34 @@
+<h1>main#edit_product</h1>
+<br>
+
+<%= form_with url: edit_path, data: {turbo: false} do |form| %>
+    <%= hidden_field_tag 'item_id', @item_id  %>
+    <%= hidden_field_tag 'market_id', @market_id  %>
+    <table class="table">
+        <thead>
+         <tr class = "table-secondary">
+            <th scope="col">Data</th>
+            <th scope="col">Old Data</th>
+            <th scope="col">Edit Data</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Product Name</th>
+                <td><%= @item.name %></td>
+                <td><%=form.text_field :name , class: 'form-control'%></td>
+            </tr>
+            <tr>
+                <th scope="row">Price</th>
+                <td><%= @market.price %></td>
+                <td><%=form.text_field :price , class: 'form-control'%></td>
+            </tr>
+            <tr>
+                <th scope="row">Quantity</th>
+                <td><%= @market.stock %></td>
+                <td><%=form.text_field :quantity , class: 'form-control'%></td>
+            </tr>
+        </tbody>
+    </table>
+    <%=form.submit :Edit , class: 'btn btn-primary'%>
+<%end%>
