@@ -26,3 +26,9 @@
     <%end%>
   </tbody>
 </table>
+
+<% if @inventory == [] || !@inventory %>
+<div class="text-center">
+    No data
+</div>
+<% end %>

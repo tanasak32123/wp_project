@@ -1,3 +1,10 @@
+<style>
+    .image {
+        max-width: 300px;
+        max-height: 15ss0px;
+    }
+</style>
+
 <h1><i class="fa-solid fa-pen"></i>&nbsp; Edit product</h1>
 <br>
 
@@ -32,16 +39,21 @@
                 <td><%= @market.stock %></td>
                 <td><%=form.text_field :quantity , class: 'form-control'%></td>
             </tr>
-            <tr>
+             <tr>
                 <th scope="row">Enable Product</th>
+                <% if @item.enable == 1 %>
+                    <td>Enable</td>
+                <% else %>
+                    <td>Disable</td>
+                <% end %>
                 <td><%= form.radio_button :enable, "true" %>
-                <%= form.label :enable_item, "Enable" %></td>
-                <td><%= form.radio_button :enable, "false" %>
+                <%= form.label :enable_item, "Enable" %>
+                <%= form.radio_button :enable, "false" %>
                 <%= form.label :disable_item, "Disable" %></td>
             </tr>
             <tr>
                 <th scope="row">Edit Picture</th>
-                <td><%= image_tag @item.image_url if @item.image %></td>
+                <td><%= image_tag @item.image_url, :class => "image" if @item.image %></td>
                 <td><%= form.file_field :image %></td>
             </tr>
         </tbody>

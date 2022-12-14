@@ -1,3 +1,10 @@
+<style>
+    .image {
+        max-width: 300px;
+        max-height: 150px;
+    }
+</style>
+
 <h1><i class="fa-solid fa-shop"></i>&nbsp; My market</h1>
 <br>
 
@@ -15,9 +22,7 @@
         <div class="col"><%= link_to "Show All", search_category_path(select: 'all') , class: 'btn btn-outline-primary'%></div>
     <div>
 </div>
-
-
-
+    
 
 <table class="table table-striped">
 <thead>
@@ -54,7 +59,7 @@
                         </div>
                         <%end%>
                     </th>
-                    <th><%= image_tag item.image_url if item.image %></th>
+                    <th><%= image_tag item.image_url, :class => "image" if item.image %></th>
                 </tr>
             <%end%>
         <%end%>
@@ -84,7 +89,7 @@
                             </div>
                             <%end%>
                         </th>
-                        <th><%= image_tag item.image_url if item.image %></th>
+                        <th><%= image_tag item.image_url, :class => "image" if item.image %></th>
                     </tr>
                 <%end%>
             <%end%>
@@ -92,3 +97,9 @@
     <%end%>
 </tbody>
 </table>
+
+<% if !@market && session[:all_item] == nil || session[:all_item] == [] %>
+<div class="text-center">
+    No data
+</div>
+<% end %>

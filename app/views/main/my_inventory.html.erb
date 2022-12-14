@@ -30,4 +30,10 @@
   </tbody>
 </table>
 
+<% if @inventory == [] %>
+<div class="text-center">
+    No data
+</div>
+<% end %>
+
 <%= link_to "Add New Product", add_product_path , class: 'btn btn-success'%>

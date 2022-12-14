@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
-    has_one_attached :pic
+    include ImageUploader::Attachment(:image)
+    validates :name, presence: true
     self.locking_column = :lock_version
 end

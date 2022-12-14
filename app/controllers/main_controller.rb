@@ -47,20 +47,23 @@ class MainController < ApplicationController
   end
 
   def update_profile
+    if session[:userEmail] != params[:email]
       user = User.where(email: params[:email]).first
       if user
         redirect_to new_profile_path(name: params[:name]), alert: 'This email is already used.'
       else
         user = User.where(id: session["userId"]).first
-        if user
-          user.update(email: params[:email], name: params[:name], user_type: params[:role].to_i, lock_version: params[:lock_version].to_i)
-          session[:userEmail] = user.email
-          session[:user_type] = user.user_type
-          redirect_to main_profile_path, :flash => { :success => "Update your profile successfully." }
-        else
-          redirect_to new_profile_path, :flash => { :alert => "Cannot change your profile. Please try again." } 
-        end
+        user.update(email: params[:email], name: params[:name], user_type: params[:role].to_i, lock_version: params[:lock_version].to_i)
+        session[:userEmail] = user.email
+        session[:user_type] = user.user_type
+        redirect_to main_profile_path, :flash => { :success => "Update your profile successfully." }
       end
+    else
+      user = User.where(id: session["userId"]).first
+      user.update(name: params[:name], user_type: params[:role].to_i, lock_version: params[:lock_version].to_i)
+      session[:user_type] = user.user_type
+      redirect_to main_profile_path, :flash => { :success => "Update your profile successfully." }
+    end
   end
 
   def update_password
