@@ -21,6 +21,10 @@
                 <th scope="row">Quantity</th>
                 <td><%=form.text_field :quantity , class: 'form-control', :required => true%></td>
             </tr>
+            <tr>
+                <th scope="row">Image</th>
+                <td><%= form.file_field :image %></td>
+            </tr>
         </tbody>
     </table>
     <%=form.submit :Create , class: 'btn btn-primary'%>

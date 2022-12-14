@@ -15,9 +15,6 @@ class MainController < ApplicationController
   end
 
   def my_market
-    pp session[:all_item]
-    pp '###############'
-    # ขาดใส่รูป
     @market = Market.all
   end
 
@@ -45,8 +42,6 @@ class MainController < ApplicationController
   end
 
   def search_category
-    # pp params[:select]
-    # pp '-----------------'
     item_id = []
     all_item = []
     is_all = params[:select]
@@ -89,9 +84,9 @@ class MainController < ApplicationController
 
   def delete_item
     u_id = session[:userId]
-    # item_id = params[:item_id]
+
     market_id = params[:market_id]
-    # item = Item.find(item_id)
+
     market = Market.find(market_id)
     market.destroy
     redirect_to main_my_inventory_path, notice: 'Delete Successfully'
@@ -130,6 +125,10 @@ class MainController < ApplicationController
       item.enable = 0
     end
 
+    if params[:image] != nil
+      item.image = params[:image]
+    end
+
     market.save
     item.save
 
@@ -146,7 +145,8 @@ class MainController < ApplicationController
     category = params[:category]
     price = params[:price]
     qty = params[:quantity]
-    Item.create(name:name,category:category,enable:1)
+    img = params[:image]
+    Item.create(name:name,category:category,enable:1,image:img)
     id = Item.last.id
     Market.create(user_id:u_id,item_id:id,price:price,stock:qty)
     redirect_to main_my_inventory_path, notice: 'Create Product Successfully' 

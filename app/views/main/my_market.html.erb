@@ -27,6 +27,7 @@
     <th scope="col">Price</th>
     <th scope="col">Stock</th>
     <th scope="col">Amount</th>
+    <th scope="col">Picture</th>
     </tr>
 </thead>
 <tbody>
@@ -53,7 +54,14 @@
                         </div>
                         <%end%>
                     </th>
+
+                    <th><%= image_tag item.image_url if item.image %></th>
+
                 </tr>
+
+                
+
+
             <%end%>
         <%end%>
     <% else %>
@@ -82,6 +90,9 @@
                             </div>
                             <%end%>
                         </th>
+
+                        <th><%= image_tag item.image_url if item.image %></th>
+
                     </tr>
                 <%end%>
             <%end%>
