@@ -1,0 +1,28 @@
+<h1><i class="fa-solid fa-basket-shopping"></i>&nbsp; Purchase history</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">From</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Purchase time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventory.each do |product| %>
+    <% item = Item.where(id:product.item_id).first%>
+    <% item_name = item.name%>
+    <% seller = User.where(id:product.seller_id).first %>
+    <% seller_name = seller.name %>
+        <tr>
+            <td><%= item_name %></td>
+            <td><%= seller_name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.qty %></td>
+            <td><%= product.created_at%></td>
+        </tr>
+    <%end%>
+  </tbody>
+</table>

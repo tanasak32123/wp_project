@@ -1,0 +1,76 @@
+<h1><i class="fa-solid fa-user"></i>&nbsp; Top seller</h1>
+<%= form_with url: search_top_path, method: :post, data: {turbo: false}, id: :form do |form| %>
+<div class="search-box mt-3 row">
+    <div class="col-12 col-md-5">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Start date:</span>
+            <input id="start_date" name="start_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <div class="invalid-feedback" id="start_date-feedback"></div>
+        </div>
+    </div>
+    <div class="col-12 col-md-5">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">End date:</span>
+            <input id="end_date" name="end_date" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <div class="invalid-feedback" id="end_date-feedback"></div>
+        </div>
+    </div>
+    <div class="col-6 col-md-2">
+        <button id="search" type="button" class="btn btn-outline-success"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+    </div>
+</div>
+<% end %>
+
+<table class="table caption-top">
+  <caption>Top price seller</caption>
+  <thead>
+    <tr>
+      <th class="col-2" scope="col">#</th>
+      <th class="col-5" scope="col">Name</th>
+      <th class="col-5" scope="col">Price</th>
+    </tr>
+  </thead>
+  <% if @permitted_tps %>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @permitted_tps['name'] %></td>
+      <td><%= @permitted_tps['total_price'] %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<% if !@permitted_tps %>
+    <div class="text-center">
+        No data
+    </div>
+<% end %>
+
+<table class="table caption-top">
+  <caption>Top quantity seller</caption>
+  <thead>
+    <tr>
+      <th class="col-2" scope="col">#</th>
+      <th class="col-5" scope="col">Name</th>
+      <th class="col-5" scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <% if @permitted_tqs %>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @permitted_tqs['name'] %></td>
+      <td><%= @permitted_tqs['total_qty'] %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<% if !@permitted_tqs %>
+    <div class="text-center">
+        No data
+    </div>
+<% end %>
+
+<%= javascript_pack_tag 'top_seller' %>

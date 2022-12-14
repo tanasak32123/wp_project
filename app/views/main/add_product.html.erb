@@ -1,0 +1,31 @@
+<h1><i class="fa-regular fa-box"></i>&nbsp; Add product</h1>
+
+<br>
+
+<%= form_with url: add_path, data: {turbo: false} do |form| %>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Product Name</th>
+                <td><%=form.text_field :name , class: 'form-control', :required => true%></td>
+            </tr>
+            <tr>
+                <th scope="row">Category</th>
+                <td><%=form.text_field :category , class: 'form-control', :required => true%></td>
+            </tr>
+            <tr>
+                <th scope="row">Price</th>
+                <td><%=form.text_field :price , class: 'form-control', :required => true%></td>
+            </tr>
+            <tr>
+                <th scope="row">Quantity</th>
+                <td><%=form.text_field :quantity , class: 'form-control', :required => true%></td>
+            </tr>
+            <tr>
+                <th scope="row">Image</th>
+                <td><%= form.file_field :image %></td>
+            </tr>
+        </tbody>
+    </table>
+    <%=form.submit :Create , class: 'btn btn-primary'%>
+<%end%>

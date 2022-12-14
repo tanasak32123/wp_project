@@ -37,21 +37,21 @@
                         </li>
                         <% if session[:user_type] != 'seller' %>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-shop"></i>&nbsp;&nbsp; My market</a>
+                            <a class="nav-link active" aria-current="page" href="/my_market"><i class="fa-solid fa-shop"></i>&nbsp;&nbsp; My market</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp; Purchase history</a>
+                            <a class="nav-link active" aria-current="page" href="/purchase_history"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp; Purchase history</a>
                         </li>
                         <% end %>
                         <% if session[:user_type] != 'buyer' %>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-right-left"></i>&nbsp;&nbsp; Sale history</a>
+                            <a class="nav-link active" aria-current="page" href="/sale_history"><i class="fa-solid fa-right-left"></i>&nbsp;&nbsp; Sale history</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-box-archive"></i>&nbsp;&nbsp; My inventory</a>
+                            <a class="nav-link active" aria-current="page" href="/my_inventory"><i class="fa-solid fa-box-archive"></i>&nbsp;&nbsp; My inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/main"><i class="fa-solid fa-user"></i>&nbsp;&nbsp; Top seller</a>
+                            <a class="nav-link active" aria-current="page" href="/top_seller"><i class="fa-solid fa-user"></i>&nbsp;&nbsp; Top seller</a>
                         </li>
                         <% end %>
                         <li><hr style="color: white;"></li>
