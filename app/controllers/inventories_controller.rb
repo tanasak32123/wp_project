@@ -1,5 +1,7 @@
 class InventoriesController < ApplicationController
   before_action :set_inventory, only: %i[ show edit update destroy ]
+  before_action :must_be_logged_in
+  before_action :should_access_data
 
   # GET /inventories or /inventories.json
   def index

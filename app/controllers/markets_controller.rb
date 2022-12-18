@@ -1,5 +1,7 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: %i[ show edit update destroy ]
+  before_action :must_be_logged_in
+  before_action :should_access_data
 
   # GET /markets or /markets.json
   def index

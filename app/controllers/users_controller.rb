@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :verify_authenticity_token
+  before_action :must_be_logged_in
+  before_action :should_access_data
 
   # GET /users or /users.json
   def index
@@ -22,7 +24,10 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    user = user_params
+    user[:user_type] = user[:user_type].to_i
+
+    @user = User.new(user)
 
     respond_to do |format|
       if @user.save
@@ -37,8 +42,11 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    user = user_params
+    user[:user_type] = user[:user_type].to_i
+
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -66,6 +74,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :name, :password_digest, :user_type, :lock_version)
+      params.require(:user).permit(:email, :name, :password, :user_type, :lock_version)
     end
 end

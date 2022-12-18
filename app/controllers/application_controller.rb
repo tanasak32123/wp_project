@@ -22,6 +22,18 @@ class ApplicationController < ActionController::Base
             end
         end
 
+        def should_access_data
+            if is_login? && !is_admin?
+                redirect_to main_main_path, alert: 'You have not permission to access this page.'
+            else
+                return true
+            end
+        end
+
+        def is_admin?
+            return session[:user_type] == "admin"
+        end
+
         def not_seller?
             user_id = session[:userId]
             user = User.find(user_id)

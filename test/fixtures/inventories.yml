@@ -2,14 +2,14 @@
 
 one:
   user: one
-  seller: one
+  seller_id: one
   price: 1.5
   qty: 1
   item: one
 
 two:
   user: two
-  seller: two
+  seller_id: two
   price: 1.5
   qty: 1
   item: two
