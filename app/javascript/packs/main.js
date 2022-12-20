@@ -1,4 +1,4 @@
-if (user_type == 'buyer') {
+if (user_type != 'seller') {
     document.getElementById("market").onclick = (e) => {
         e.preventDefault();
         location.href = "/my_market";
@@ -10,7 +10,7 @@ if (user_type == 'buyer') {
     };
 }
 
-if (user_type == 'seller') {
+if (user_type != 'buyer') {
     document.getElementById("sale").onclick = (e) => {
         e.preventDefault();
         location.href = "/sale_history";
